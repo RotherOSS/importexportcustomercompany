@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: OTOBO Installation Guide rel-10.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-05-16 10:05+0200\n"
-"PO-Revision-Date: 2025-01-13 11:21+0000\n"
+"PO-Revision-Date: 2025-01-13 15:21+0000\n"
 "Last-Translator: Markus Hlinka <mah@rother-oss.com>\n"
 "Language-Team: German <http://translate.otobo.org/projects/"
 "manual-importexportcustomercompany/rel-10_1/de/>\n"
@@ -55,7 +55,7 @@ msgstr ""
 
 #: ../../content/index.rst:34
 msgid "Third-party software"
-msgstr ""
+msgstr "Drittanbieter-Software"
 
 #: ../../content/index.rst:35
 msgid "\\-"
@@ -67,19 +67,19 @@ msgstr "Verwendung"
 
 #: ../../content/index.rst:41
 msgid "Setup"
-msgstr ""
+msgstr "Einrichtung"
 
 #: ../../content/index.rst:44
 msgid "Configuration Reference"
-msgstr ""
+msgstr "Konfigurationsreferenz"
 
 #: ../../content/index.rst:47
 msgid "ImportExportCustomerCompany"
-msgstr ""
+msgstr "ImportExportCustomerCompany"
 
 #: ../../content/index.rst:50
 msgid "ImportExport::ImportExportCustomerCompany::ForceCSVMappingRecreation"
-msgstr ""
+msgstr "ImportExport::ImportExportCustomerCompany::ForceCSVMappingRecreation"
 
 #: ../../content/index.rst:51
 msgid ""
@@ -89,11 +89,11 @@ msgstr ""
 
 #: ../../content/index.rst:54
 msgid "ObjectBackend::ModuleRegistration"
-msgstr ""
+msgstr "ObjectBackend::ModuleRegistration"
 
 #: ../../content/index.rst:57
 msgid "ImportExport::ObjectBackendRegistration###CustomerCompany"
-msgstr ""
+msgstr "ImportExport::ObjectBackendRegistration###CustomerCompany"
 
 #: ../../content/index.rst:58
 msgid "Object backend module registration for the import/export module."
