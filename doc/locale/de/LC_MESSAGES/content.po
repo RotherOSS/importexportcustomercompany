@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: OTOBO Installation Guide rel-11.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-05-16 10:04+0200\n"
-"PO-Revision-Date: 2025-01-13 15:21+0000\n"
+"PO-Revision-Date: 2025-01-14 10:22+0000\n"
 "Last-Translator: Markus Hlinka <mah@rother-oss.com>\n"
 "Language-Team: German <http://translate.otobo.org/projects/"
 "manual-importexportcustomercompany/master/de/>\n"
@@ -31,7 +31,7 @@ msgstr "Beschreibung"
 
 #: ../../content/index.rst:20
 msgid "Provides ImportExportBackend for CustomerCompany."
-msgstr ""
+msgstr "Bietet das ImportExportBackend für CustomerCompany."
 
 #: ../../content/index.rst:23
 msgid "System requirements"
@@ -82,6 +82,8 @@ msgid ""
 "Defines if CSV-mappings are re-created on next package reinstallation or "
 "upgrade if already existent."
 msgstr ""
+"Legt fest, ob CSV-Zuordnungen bei der nächsten Paketneuinstallation oder "
+"beim nächsten Upgrade neu erstellt werden, wenn sie bereits vorhanden sind."
 
 #: ../../content/index.rst:54
 msgid "ObjectBackend::ModuleRegistration"
@@ -93,7 +95,7 @@ msgstr "ImportExport::ObjectBackendRegistration###CustomerCompany"
 
 #: ../../content/index.rst:58
 msgid "Object backend module registration for the import/export module."
-msgstr ""
+msgstr "Registrierung des Objekt-Backend-Moduls für das Import/Export-Modul."
 
 #: ../../content/index.rst:61
 msgid "About"
