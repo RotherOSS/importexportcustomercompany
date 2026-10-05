@@ -27,12 +27,15 @@ use utf8;
 # CPAN modules
 
 # OTOBO modules
+use Kernel::System::VariableCheck qw(IsHashRefWithData);
 
 our @ObjectDependencies = (
-    'Kernel::System::ImportExport',
-    'Kernel::System::CustomerCompany',
-    'Kernel::System::Log',
     'Kernel::Config',
+    'Kernel::System::CustomerCompany',
+    'Kernel::System::DynamicField',
+    'Kernel::System::DynamicField::Backend',
+    'Kernel::System::ImportExport',
+    'Kernel::System::Log',
     'Kernel::System::ReferenceData',
     'Kernel::System::Valid',
 );
@@ -178,6 +181,7 @@ sub MappingObjectAttributesGet {
     $Self->{CustomerCompanyMap} = $Kernel::OM->Get('Kernel::Config')->Get('CustomerCompany')->{Map}
         || die "Need CustomerCompany->Map in Kernel/Config.pm!";
 
+    # implicitly includes dynamic fields
     for my $CurrAttributeMapping ( @{ $Self->{CustomerCompanyMap} } ) {
         my $CurrAttribute = {
             Key   => $CurrAttributeMapping->[0],
@@ -573,13 +577,18 @@ sub ImportDataSave {
 
     KEY:
     for my $Key ( keys(%NewCustomerCompanyData) ) {
+
+        # the type of check here implies that it is not possible to set values empty
         next KEY if ( !$NewCustomerCompanyData{$Key} );
         $CustomerCompanyData{$Key} = $NewCustomerCompanyData{$Key};
     }
 
     #(2) if company DOES NOT exist => create new entry...
-    my $Result     = 0;
-    my $ReturnCode = "";    # Created | Changed | Failed
+    my $Result                    = 0;
+    my $ReturnCode                = "";                                                                      # Created | Changed | Failed
+    my @CustomerCompanyMap        = $Kernel::OM->Get('Kernel::Config')->Get('CustomerCompany')->{Map}->@*;
+    my $DynamicFieldObject        = $Kernel::OM->Get('Kernel::System::DynamicField');
+    my $DynamicFieldBackendObject = $Kernel::OM->Get('Kernel::System::DynamicField::Backend');
 
     if ($NewCompany) {
         $Result = $Kernel::OM->Get('Kernel::System::CustomerCompany')->CustomerCompanyAdd(
@@ -598,6 +607,42 @@ sub ImportDataSave {
         }
         else {
             $ReturnCode = "Created";
+
+            # set dynamic field values
+            ENTRY:
+            for my $Entry (@CustomerCompanyMap) {
+                next ENTRY if $Entry->[5] ne 'dynamic_field';
+                next ENTRY unless exists $NewCustomerCompanyData{ $Entry->[0] };
+
+                my $DynamicFieldConfig = $DynamicFieldObject->DynamicFieldGet(
+                    Name => $Entry->[2],
+                );
+
+                if ( !IsHashRefWithData($DynamicFieldConfig) ) {
+                    $Kernel::OM->Get('Kernel::System::Log')->Log(
+                        Priority => 'error',
+                        Message  => "ImportDataSave: Dynamic field '$Entry->[2]' not found.",
+                    );
+
+                    next ENTRY;
+                }
+
+                my $ValueSet = $DynamicFieldBackendObject->ValueSet(
+                    DynamicFieldConfig => $DynamicFieldConfig,
+                    ObjectName         => $NewCustomerCompanyData{CustomerID},
+                    Value              => $NewCustomerCompanyData{ $Entry->[0] },
+                    UserID             => $Param{UserID},
+                );
+
+                if ( !$ValueSet ) {
+                    $Kernel::OM->Get('Kernel::System::Log')->Log(
+                        Priority => 'error',
+                        Message  => "ImportDataSave: Unable to set value for dynamic field '$Entry->[2]'.",
+                    );
+
+                    next ENTRY;
+                }
+            }
         }
     }
 
@@ -619,6 +664,42 @@ sub ImportDataSave {
         }
         else {
             $ReturnCode = "Changed";
+
+            # set dynamic field values
+            ENTRY:
+            for my $Entry (@CustomerCompanyMap) {
+                next ENTRY if $Entry->[5] ne 'dynamic_field';
+                next ENTRY unless exists $NewCustomerCompanyData{ $Entry->[0] };
+
+                my $DynamicFieldConfig = $DynamicFieldObject->DynamicFieldGet(
+                    Name => $Entry->[2],
+                );
+
+                if ( !IsHashRefWithData($DynamicFieldConfig) ) {
+                    $Kernel::OM->Get('Kernel::System::Log')->Log(
+                        Priority => 'error',
+                        Message  => "ImportDataSave: Dynamic field '$Entry->[2]' not found.",
+                    );
+
+                    next ENTRY;
+                }
+
+                my $ValueSet = $DynamicFieldBackendObject->ValueSet(
+                    DynamicFieldConfig => $DynamicFieldConfig,
+                    ObjectName         => $NewCustomerCompanyData{CustomerID},
+                    Value              => $NewCustomerCompanyData{ $Entry->[0] },
+                    UserID             => $Param{UserID},
+                );
+
+                if ( !$ValueSet ) {
+                    $Kernel::OM->Get('Kernel::System::Log')->Log(
+                        Priority => 'error',
+                        Message  => "ImportDataSave: Unable to set value for dynamic field '$Entry->[2]'.",
+                    );
+
+                    next ENTRY;
+                }
+            }
         }
     }
 
