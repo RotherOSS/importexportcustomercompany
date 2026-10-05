@@ -621,7 +621,10 @@ sub ImportDataSave {
                 if ( !IsHashRefWithData($DynamicFieldConfig) ) {
                     $Kernel::OM->Get('Kernel::System::Log')->Log(
                         Priority => 'error',
-                        Message  => "ImportDataSave: Dynamic field '$Entry->[2]' not found.",
+                        Message  => "ImportDataSave: dynamic field '$Entry->[2]' could not be found during import of CustomerCompany ("
+                            . "CustomerID "
+                            . $CustomerCompanyData{CustomerID}
+                            . ") (line $Param{Counter}).",
                     );
 
                     next ENTRY;
@@ -637,7 +640,10 @@ sub ImportDataSave {
                 if ( !$ValueSet ) {
                     $Kernel::OM->Get('Kernel::System::Log')->Log(
                         Priority => 'error',
-                        Message  => "ImportDataSave: Unable to set value for dynamic field '$Entry->[2]'.",
+                        Message  => "ImportDataSave: failed to set value for dynamic field '$Entry->[2]' during import of CustomerCompany ("
+                            . "CustomerID "
+                            . $CustomerCompanyData{CustomerID}
+                            . ") (line $Param{Counter}).",
                     );
 
                     next ENTRY;
@@ -678,7 +684,10 @@ sub ImportDataSave {
                 if ( !IsHashRefWithData($DynamicFieldConfig) ) {
                     $Kernel::OM->Get('Kernel::System::Log')->Log(
                         Priority => 'error',
-                        Message  => "ImportDataSave: Dynamic field '$Entry->[2]' not found.",
+                        Message  => "ImportDataSave: dynamic field '$Entry->[2]' could not be found during import of CustomerCompany ("
+                            . "CustomerID "
+                            . $CustomerCompanyData{CustomerID}
+                            . ") (line $Param{Counter}).",
                     );
 
                     next ENTRY;
@@ -694,7 +703,10 @@ sub ImportDataSave {
                 if ( !$ValueSet ) {
                     $Kernel::OM->Get('Kernel::System::Log')->Log(
                         Priority => 'error',
-                        Message  => "ImportDataSave: Unable to set value for dynamic field '$Entry->[2]'.",
+                        Message  => "ImportDataSave: failed to set value for dynamic field '$Entry->[2]' during import of CustomerCompany ("
+                            . "CustomerID "
+                            . $CustomerCompanyData{CustomerID}
+                            . ") (line $Param{Counter}).",
                     );
 
                     next ENTRY;
