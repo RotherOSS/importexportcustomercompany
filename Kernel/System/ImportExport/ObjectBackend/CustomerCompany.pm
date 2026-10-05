@@ -170,14 +170,6 @@ sub MappingObjectAttributesGet {
         }
     }
 
-    my $ImportExportObject = $Kernel::OM->Get('Kernel::System::ImportExport');
-
-    # get object data
-    my $ObjectData = $ImportExportObject->ObjectDataGet(
-        TemplateID => $Param{TemplateID},
-        UserID     => $Param{UserID},
-    );
-
     my @ElementList = qw{};
     $Self->{CustomerCompanyKey}
         = $Kernel::OM->Get('Kernel::Config')->Get('CustomerCompany')->{CustomerCompanyKey}
@@ -255,14 +247,6 @@ sub SearchAttributesGet {
             return;
         }
     }
-
-    my $ImportExportObject = $Kernel::OM->Get('Kernel::System::ImportExport');
-
-    # get object data
-    my $ObjectData = $ImportExportObject->ObjectDataGet(
-        TemplateID => $Param{TemplateID},
-        UserID     => $Param{UserID},
-    );
 
     return;
 }
@@ -492,7 +476,6 @@ sub ImportDataSave {
     my %NewCustomerCompanyData = qw{};
 
     # build mapping table
-    my $IsHeadline = 1;
     for my $MappingID ( @{$MappingList} ) {
 
         # get mapping object data
