@@ -2,7 +2,7 @@
 # OTOBO is a web-based ticketing system for service organisations.
 # --
 # Copyright (C) 2012-2023 Znuny GmbH, http://znuny.com/
-# Copyright (C) 2019-2025 Rother OSS GmbH, https://otobo.de/
+# Copyright (C) 2019-2026 Rother OSS GmbH, https://otobo.io/
 # --
 # This program is free software: you can redistribute it and/or modify it under
 # the terms of the GNU General Public License as published by the Free Software
@@ -111,7 +111,7 @@ sub ObjectAttributesGet {
         return;
     }
 
-    my %Validlist = $Kernel::OM->Get('Kernel::System::Valid')->ValidList();
+    my %ValidList = $Kernel::OM->Get('Kernel::System::Valid')->ValidList();
 
     my $Attributes = [
         {
@@ -119,7 +119,7 @@ sub ObjectAttributesGet {
             Name  => 'Default Validity',
             Input => {
                 Type         => 'Selection',
-                Data         => \%Validlist,
+                Data         => \%ValidList,
                 Required     => 1,
                 Translation  => 1,
                 PossibleNone => 0,
@@ -218,7 +218,7 @@ sub MappingObjectAttributesGet {
         },
 
         # It doesn't make sense to configure and set the identifier:
-        # CustomerID is used to search for existing enrties anyway!
+        # CustomerID is used to search for existing entries anyway!
         # (See sub ImportDataSave)
         #        {
         #            Key   => 'Identifier',
@@ -351,13 +351,13 @@ sub ExportDataGet {
         push @MappingObjectList, $MappingObjectData;
     }
 
-    # list customer companys...
+    # list customer companies...
     my %CustomerCompanyList
         = $Kernel::OM->Get('Kernel::System::CustomerCompany')->CustomerCompanyList();
 
     my @ExportData;
 
-    for my $CurrCompany (%CustomerCompanyList) {
+    for my $CurrCompany ( keys %CustomerCompanyList ) {
 
         my %CustomerCompanyData =
             $Kernel::OM->Get('Kernel::System::CustomerCompany')
@@ -491,8 +491,7 @@ sub ImportDataSave {
     my $Counter                = 0;
     my %NewCustomerCompanyData = qw{};
 
-    #--------------------------------------------------------------------------
-    #BUILD MAPPING TABLE...
+    # build mapping table
     my $IsHeadline = 1;
     for my $MappingID ( @{$MappingList} ) {
 
@@ -518,7 +517,7 @@ sub ImportDataSave {
         #        push( @MappingObjectList, $MappingObjectData );
 
         # TO DO: It doesn't make sense to configure and set the identifier:
-        # CustomerID is used to search for existing enrties anyway!
+        # CustomerID is used to search for existing entries anyway!
         #
         #  See lines 529-530:
         #  my %CustomerCompanyData = $Self->{CustomerCompanyObject}
@@ -567,9 +566,6 @@ sub ImportDataSave {
         $Counter++;
 
     }
-
-    #--------------------------------------------------------------------------
-    #DO THE IMPORT...
 
     #(1) Preprocess data...
 
@@ -642,9 +638,6 @@ sub ImportDataSave {
             $ReturnCode = "Changed";
         }
     }
-
-    #
-    #--------------------------------------------------------------------------
 
     return ( $Result, $ReturnCode );
 }

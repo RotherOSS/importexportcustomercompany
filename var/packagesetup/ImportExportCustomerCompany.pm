@@ -2,7 +2,7 @@
 # OTOBO is a web-based ticketing system for service organisations.
 # --
 # Copyright (C) 2012-2023 Znuny GmbH, http://znuny.com/
-# Copyright (C) 2019-2025 Rother OSS GmbH, https://otobo.io/
+# Copyright (C) 2019-2026 Rother OSS GmbH, https://otobo.io/
 # --
 # This program is free software: you can redistribute it and/or modify it under
 # the terms of the GNU General Public License as published by the Free Software
@@ -185,7 +185,6 @@ sub _CreateMappings () {
         'ImportExport::ImportExportCustomerCompany::ForceCSVMappingRecreation'
     ) || '0';
 
-    #---------------------------------------------------------------------------
     # get list of all templates
     my $TemplateListRef = $Kernel::OM->Get('Kernel::System::ImportExport')->TemplateList(
         Object => $TemplateObject,
@@ -213,7 +212,6 @@ sub _CreateMappings () {
         }
     }
 
-    #---------------------------------------------------------------------------
     # add a template customer company
     my $TemplateID;
 
@@ -266,7 +264,6 @@ sub _CreateMappings () {
         );
     }
 
-    #---------------------------------------------------------------------------
     # mapping for customer company
     my @ElementList = qw{};
     $Self->{CustomerCompanyKey}
@@ -312,7 +309,6 @@ sub _CreateMappings () {
         }
     ];
 
-    #---------------------------------------------------------------------------
     # get object attributes
     my $ObjectAttributeList = $Kernel::OM->Get('Kernel::System::ImportExport')->ObjectAttributesGet(
         TemplateID => $ExportDataSets->[0]->{SourceExportData}->{ExportDataGet}->{TemplateID},
@@ -324,7 +320,6 @@ sub _CreateMappings () {
     }
     $ExportDataSets->[0]->{SourceExportData}->{ObjectData} = $AttributeValues;
 
-    #---------------------------------------------------------------------------
     # run general ExportDataGet
     EXPORTDATASET:
     for my $CurrentExportDataSet ( @{$ExportDataSets} ) {
