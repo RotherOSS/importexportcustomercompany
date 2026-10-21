@@ -10,6 +10,8 @@
     <Filelist>
         <File Permission="660" Location="Kernel/Config/Files/XML/ImportExportCustomerCompany.xml" />
         <File Permission="660" Location="Kernel/Language/de_ImportExportCustomerCompany.pm" />
+        <File Permission="660" Location="Kernel/Language/hu_ImportExportCustomerCompany.pm" />
+        <File Permission="660" Location="Kernel/Language/ja_ImportExportCustomerCompany.pm" />
         <File Permission="660" Location="Kernel/System/ImportExport/ObjectBackend/CustomerCompany.pm" />
         <File Permission="660" Location="scripts/test/ImportExportObjectCustomerCompany.t" />
         <File Permission="660" Location="var/packagesetup/ImportExportCustomerCompany.pm" />
