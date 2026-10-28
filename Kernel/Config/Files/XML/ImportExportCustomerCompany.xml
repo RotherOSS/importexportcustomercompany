@@ -13,7 +13,7 @@
 
     <Setting Name="ImportExport::ImportExportCustomerCompany::ForceCSVMappingRecreation" Required="1" Valid="1">
         <Description Translatable="1">Defines if CSV-mappings are re-created on next package reinstallation or upgrade if already existent.</Description>
-        <Navigation>ImportExportCustomerCompany</Navigation>
+        <Navigation>Core::ImportExport::ImportExportCustomerCompany</Navigation>
         <Value>
             <Item ValueType="Checkbox">0</Item>
         </Value>
