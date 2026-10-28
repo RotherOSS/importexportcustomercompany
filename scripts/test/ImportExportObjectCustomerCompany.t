@@ -1,10 +1,18 @@
 # --
+# OTOBO is a web-based ticketing system for service organisations.
+# --
 # Copyright (C) 2012-2023 Znuny GmbH, http://znuny.com/
 # Copyright (C) 2022-2023 OTOBO GmbH, http://otobo.de/
+# Copyright (C) 2019-2026 Rother OSS GmbH, https://otobo.io/
 # --
-# This software comes with ABSOLUTELY NO WARRANTY. For details, see
-# the enclosed file COPYING for license information (AGPL). If you
-# did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
+# This program is free software: you can redistribute it and/or modify it under
+# the terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+# This program is distributed in the hope that it will be useful, but WITHOUT
+# ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+# FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+# You should have received a copy of the GNU General Public License
+# along with this program. If not, see <https://www.gnu.org/licenses/>.
 # --
 
 use strict;
@@ -21,12 +29,11 @@ use Kernel::System::ImportExport::ObjectBackend::CustomerCompany;
 use Kernel::System::CustomerCompany;
 use Kernel::System::XML;
 
-$Self->{CustomerCompanyObject}   = Kernel::System::CustomerCompany->new( %{$Self} );
-$Self->{EncodeObject}            = Kernel::System::Encode->new( %{$Self} );
-$Self->{GeneralCatalogObject}    = Kernel::System::GeneralCatalog->new( %{$Self} );
-$Self->{ImportExportObject}      = Kernel::System::ImportExport->new( %{$Self} );
-$Self->{ObjectBackendObject}     = Kernel::System::ImportExport::ObjectBackend::CustomerCompany->new( %{$Self} );
-    
+$Self->{CustomerCompanyObject} = Kernel::System::CustomerCompany->new( %{$Self} );
+$Self->{EncodeObject}          = Kernel::System::Encode->new( %{$Self} );
+$Self->{GeneralCatalogObject}  = Kernel::System::GeneralCatalog->new( %{$Self} );
+$Self->{ImportExportObject}    = Kernel::System::ImportExport->new( %{$Self} );
+$Self->{ObjectBackendObject}   = Kernel::System::ImportExport::ObjectBackend::CustomerCompany->new( %{$Self} );
 
 # ------------------------------------------------------------ #
 # make preparations
@@ -39,8 +46,8 @@ for ( 1 .. 30 ) {
     # add a test template for later checks
     my $TemplateID = $Self->{ImportExportObject}->TemplateAdd(
         Object  => 'CustomerCompany',
-        Format  => 'UnitTest' . int rand 1_000_000,
-        Name    => 'UnitTest' . int rand 1_000_000,
+        Format  => 'UnitTest' . $Kernel::OM->Get('Kernel::System::UnitTest::Helper')->GetRandomNumber(),
+        Name    => 'UnitTest' . $Kernel::OM->Get('Kernel::System::UnitTest::Helper')->GetRandomNumber(),
         ValidID => 1,
         UserID  => 1,
     );
@@ -49,7 +56,6 @@ for ( 1 .. 30 ) {
 }
 
 my $TestCount = 1;
-
 
 # ------------------------------------------------------------ #
 # ObjectList test 1 (check CSV item)
@@ -66,15 +72,12 @@ $Self->True(
 
 $TestCount++;
 
-
 # ------------------------------------------------------------ #
 # ObjectAttributesGet test 1 (check attribute hash)
 # ------------------------------------------------------------ #
 
 #
 #
-# TO DO 
+# TO DO
 #
 #
-
-
