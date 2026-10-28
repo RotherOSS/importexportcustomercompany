@@ -2,7 +2,6 @@
 # OTOBO is a web-based ticketing system for service organisations.
 # --
 # Copyright (C) 2012-2023 Znuny GmbH, http://znuny.com/
-# Copyright (C) 2022-2023 OTOBO GmbH, http://otobo.de/
 # Copyright (C) 2019-2026 Rother OSS GmbH, https://otobo.io/
 # --
 # This program is free software: you can redistribute it and/or modify it under
