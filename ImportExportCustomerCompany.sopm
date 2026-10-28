@@ -8,6 +8,7 @@
     <URL>https://otobo.io/</URL>
     <License>GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007</License>
     <Description Lang="en">Provides ImportExportBackend for CustomerCompany.</Description>
+    <Description Lang="hu">Importáló és exportáló háttérprogramot biztosít az ügyfél-vállalathoz.</Description>
     <Filelist>
         <File Permission="660" Location="Kernel/Config/Files/XML/ImportExportCustomerCompany.xml" />
         <File Permission="660" Location="Kernel/Language/de_ImportExportCustomerCompany.pm" />
