@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: OTOBO Installation Guide rel-11.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-07-13 12:01+0000\n"
-"PO-Revision-Date: 2026-09-03 18:41+0000\n"
+"PO-Revision-Date: 2026-10-29 19:41+0000\n"
 "Last-Translator: Balázs Úr <balazs@urbalazs.hu>\n"
 "Language-Team: Hungarian <http://translate.otobo.org/projects/otobo-11-0/"
 "addons/manuals/importexportcustomercompany-documentation/hu/>\n"
@@ -22,10 +22,8 @@ msgstr ""
 "Generated-By: Babel 2.4.0\n"
 
 #: ../content/index.rst:5
-#, fuzzy
-#| msgid "Contact"
 msgid "Contents"
-msgstr "Kapcsolat"
+msgstr "Tartalom"
 
 #: ../content/index.rst:10
 msgid "Description"
@@ -33,7 +31,7 @@ msgstr "Leírás"
 
 #: ../content/index.rst:11
 msgid "Provides ImportExportBackend for CustomerCompany."
-msgstr ""
+msgstr "Importáló és exportáló háttérprogramot biztosít az ügyfél-vállalathoz."
 
 #: ../content/index.rst:14
 msgid "System requirements"
@@ -73,25 +71,27 @@ msgstr "Beállítások hivatkozása"
 
 #: ../content/index.rst:38
 msgid "ImportExportCustomerCompany"
-msgstr ""
+msgstr "ImportExportCustomerCompany"
 
 #: ../content/index.rst:41
 msgid "ImportExport::ImportExportCustomerCompany::ForceCSVMappingRecreation"
-msgstr ""
+msgstr "ImportExport::ImportExportCustomerCompany::ForceCSVMappingRecreation"
 
 #: ../content/index.rst:42
 msgid ""
 "Defines if CSV-mappings are re-created on next package reinstallation or "
 "upgrade if already existent."
 msgstr ""
+"Meghatározza, hogy a CSV-leképezések újra létrehozásra kerülnek-e a csomag "
+"következő újratelepítésekor vagy frissítésekor, ha már léteznek."
 
 #: ../content/index.rst:45
 msgid "ObjectBackend::ModuleRegistration"
-msgstr ""
+msgstr "ObjectBackend::ModuleRegistration"
 
 #: ../content/index.rst:48
 msgid "ImportExport::ObjectBackendRegistration###CustomerCompany"
-msgstr ""
+msgstr "ImportExport::ObjectBackendRegistration###CustomerCompany"
 
 #: ../content/index.rst:49
 msgid "Object backend module registration for the import/export module."
@@ -112,11 +112,11 @@ msgstr "Rother OSS GmbH"
 
 #: ../content/index.rst:57
 msgid "Email: hello@otobo.de"
-msgstr ""
+msgstr "E-mail: hello@otobo.de"
 
 #: ../content/index.rst:58
 msgid "Web: https://otobo.de"
-msgstr ""
+msgstr "Web: https://otobo.de"
 
 #: ../content/index.rst:61
 msgid "Version"
